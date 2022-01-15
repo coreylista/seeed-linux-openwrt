@@ -13,7 +13,7 @@ while [ ! -z "$1" ]; do
 		source_update
 		;;
 	--feeds)
-	    WORKSPACE_ROOT=`pwd`
+#	    WORKSPACE_ROOT=`pwd`
 		cd ${OPENWRTROOT}
 		./scripts/feeds update -a
 		cd ${OPENWRTROOT}/feeds/packages
@@ -27,19 +27,20 @@ while [ ! -z "$1" ]; do
 		;;
 	--deconfig)
 		cd ${OPENWRTROOT}
-		if [ "${OPENWRT_CONFIG_FILE}" = "configs/x86_defconfig" ]; then
-			cp -rf ../files/x86 files
-
-			git clone  https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git /tmp/linux-firmware
-			mkdir -p files/lib/firmware
-			cp /tmp/linux-firmware/iwlwifi-QuZ-a0-*.* files/lib/firmware
-
-			echo "use x86 default custom rootfs config files"
-		fi
-		if [ "${OPENWRT_CONFIG_FILE}" = "configs/rpi_cm4_defconfig" ]; then
+#		if [ "${OPENWRT_CONFIG_FILE}" = "configs/x86_defconfig" ]; then
+#			cp -rf ../files/x86 files
+#
+#			git clone  https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git /tmp/linux-firmware
+#			mkdir -p files/lib/firmware
+#			cp /tmp/linux-firmware/iwlwifi-QuZ-a0-*.* files/lib/firmware
+#
+#			echo "use x86 default custom rootfs config files"
+#		fi
+#		if [ "${OPENWRT_CONFIG_FILE}" = "configs/rpi_cm4_defconfig" ]; then
+			OPENWRT_CONFIG_FILE=$(./configs/rpi_cm4_defconfig)
 			cp -rf ../files/rpi files
 			echo "use rpi default custom rootfs config files"
-		fi
+#		fi
 		cp ../$OPENWRT_CONFIG_FILE .config
 		make defconfig
 		;;
