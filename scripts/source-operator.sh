@@ -41,17 +41,17 @@ source_update () {
 
 
 	echo "modify feeds.conf.default"
-	echo -e "src-git seeed https://github.com/Seeed-Studio/seeed-linux-openwrt;packages" >> ${OPENWRT_ROOT}/feeds.conf.default
+	echo -e "src-git seeed https://github.com/coreylista/seeed-linux-openwrt;packages" >> ${OPENWRT_ROOT}/feeds.conf.default
 	git add feeds.conf.default
 	git commit -m "feeds: add seeed's packages"
 	echo -e "src-git node https://github.com/nxhack/openwrt-node-packages.git;openwrt-21.02" >> ${OPENWRT_ROOT}/feeds.conf.default
 	git add feeds.conf.default
 	git commit -m "feeds: add nxhack's node packages"
 
-	echo  "x86: enable igc net drivers"
-	echo -e "CONFIG_IGC=y" >> $OPENWRT_ROOT/target/linux/x86/config-5.4
-	git add target/linux/x86/config-5.4
-	git commit -m "x86: enable igc net drivers"
+#	echo  "x86: enable igc net drivers"
+#	echo -e "CONFIG_IGC=y" >> $OPENWRT_ROOT/target/linux/x86/config-5.4
+#	git add target/linux/x86/config-5.4
+#	git commit -m "x86: enable igc net drivers"
 
 	echo  "enable cm4 wifi"
 	sed -i 's/36/44/g;s/VHT80/VHT20/g' $OPENWRT_ROOT/package/kernel/mac80211/files/lib/wifi/mac80211.sh

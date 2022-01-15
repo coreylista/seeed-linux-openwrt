@@ -17,7 +17,7 @@ while [ ! -z "$1" ]; do
 		cd ${OPENWRTROOT}
 		./scripts/feeds update -a
 		cd ${OPENWRTROOT}/feeds/packages
-		git am ${WORKSPACE_ROOT}/patches/fd03fc267e077bf948ada8af2d9fcb3616551247.patch
+		#git am ${WORKSPACE_ROOT}/patches/fd03fc267e077bf948ada8af2d9fcb3616551247.patch
 		cd ${OPENWRTROOT}
 		./scripts/feeds install -a
 		./scripts/feeds uninstall luci-app-dockerman

@@ -55,5 +55,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: "packages"
           directory: "/tmp/packages"
-          repository: "Seeed-Studio/seeed-linux-openwrt"
+          repository: "coreylista/seeed-linux-openwrt"
           force: true
