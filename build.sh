@@ -13,7 +13,7 @@ while [ ! -z "$1" ]; do
 		source_update
 		;;
 	--feeds)
-#	    WORKSPACE_ROOT=`pwd`
+	    OPENWRTROOT=$(openwrt)
 		cd ${OPENWRTROOT}
 		./scripts/feeds update -a
 		cd ${OPENWRTROOT}/feeds/packages
