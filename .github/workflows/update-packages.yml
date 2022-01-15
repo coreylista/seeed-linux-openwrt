@@ -13,7 +13,7 @@ env:
   IPV6MOD_IN_FIRMWARE: true
   KMODS_IN_FIRMWARE: true
   UPLOAD_RCLONE: true
-  TZ: Asia/Shanghai
+  TZ: America/New_York
 
 jobs:
   Build:
@@ -36,7 +36,7 @@ jobs:
           sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-1804) tree
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
-          sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+          sudo ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
           git config --global user.name "I'm a Code Bot"
           git config --global user.email "baozhu.zuo@gmail.com"
           git checkout magic
@@ -57,4 +57,3 @@ jobs:
           directory: "/tmp/packages"
           repository: "Seeed-Studio/seeed-linux-openwrt"
           force: true
-

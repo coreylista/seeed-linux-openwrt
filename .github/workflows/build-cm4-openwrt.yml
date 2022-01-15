@@ -10,11 +10,11 @@ on:
 #    types: started
 
 env:
-  OPENWRT_CONFIG_FILE: configs/rpi_cm4_defconfig 
+  OPENWRT_CONFIG_FILE: configs/rpi_cm4_defconfig
   IPV6MOD_IN_FIRMWARE: true
   KMODS_IN_FIRMWARE: true
   UPLOAD_RCLONE: true
-  TZ: Asia/Shanghai
+  TZ: America/New_York
 
 jobs:
   Build:
@@ -37,7 +37,7 @@ jobs:
           sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-1804) tree
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
-          sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+          sudo ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
           git config --global user.name "I'm a Code Bot"
           git config --global user.email "baozhu.zuo@gmail.com"
           git checkout magic
@@ -149,7 +149,7 @@ jobs:
         if: env.GENERATE_STATUS == 'success' && env.UPLOAD_RCLONE == 'true' && env.RCLONE_PACKAGE != ''
         run: |
           cd $OPENWRTROOT
-          ls 
+          ls
           curl https://rclone.org/install.sh | sudo bash
           mkdir -p ~/.config/rclone/
           cat << EOF > /tmp/rclone.de
@@ -164,7 +164,7 @@ jobs:
           echo "+ openwrt-keyring*" >> /tmp/upload-rule.txt
           rclone mkdir $RCLONE_PACKAGE:Openwrt/$(date +"%Y-%m-%d")/rpi
           #rclone copy bin $RCLONE_PACKAGE:Openwrt/$(date +"%Y-%m-%d")/rpi --filter-from   /tmp/upload-rule.txt
-          rclone copy bin/targets $RCLONE_PACKAGE:Openwrt/$(date +"%Y-%m-%d")/rpi 
+          rclone copy bin/targets $RCLONE_PACKAGE:Openwrt/$(date +"%Y-%m-%d")/rpi
           echo "::warning file=Firmware-OneDrive::Download Link: https://1drv.ms/u/s!AqG2uRmVUhlSh0NHMLMmQKLyASvi?e=mup3cd"
 
       - name: Delete Artifacts

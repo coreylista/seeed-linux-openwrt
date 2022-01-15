@@ -5,39 +5,39 @@ source_update () {
 	echo "download code ..."
 	WORKSPACE_ROOT=`pwd`
 	OPENWRT_MAINLINE="https://github.com/openwrt/openwrt"
-	LEAN_PACKAGE="https://github.com/coolsnowwolf/lede"
-	git clone ${OPENWRT_MAINLINE} openwrt 
+#	LEAN_PACKAGE="https://github.com/coolsnowwolf/lede"
+	git clone ${OPENWRT_MAINLINE} openwrt
 	cd openwrt
 	OPENWRT_ROOT=`pwd`
 
-	git clone ${LEAN_PACKAGE} /tmp/lede  --bare
-	git clone /tmp/lede /tmp/lede-ucl
-	git clone /tmp/lede /tmp/lede-upx
+#	git clone ${LEAN_PACKAGE} /tmp/lede  --bare
+#	git clone /tmp/lede /tmp/lede-ucl
+#	git clone /tmp/lede /tmp/lede-upx
 
-	cd /tmp/lede-ucl/
-	git-filter-repo --path tools/ucl/
+#	cd /tmp/lede-ucl/
+#	git-filter-repo --path tools/ucl/
 
-	cd /tmp/lede-upx/
-	git-filter-repo --path tools/upx/
+#	cd /tmp/lede-upx/
+#	git-filter-repo --path tools/upx/
 
 	cd ${OPENWRT_ROOT}
-	git checkout remotes/origin/openwrt-21.02 -b openwrt-21.02
-	git remote add -f ucl /tmp/lede-ucl
-	git remote add -f upx /tmp/lede-upx 
+	git checkout remotes/origin/master -b master
+#	git remote add -f ucl /tmp/lede-ucl
+#	git remote add -f upx /tmp/lede-upx
 
-	git merge ucl/master --allow-unrelated-histories --commit -m "merge: coolsnowwolf's ucl dir"
-	git merge upx/master --allow-unrelated-histories --commit -m "merge: coolsnowwolf's upx dir"
+#	git merge ucl/master --allow-unrelated-histories --commit -m "merge: coolsnowwolf's ucl dir"
+#	git merge upx/master --allow-unrelated-histories --commit -m "merge: coolsnowwolf's upx dir"
 
-	echo "clean dir"
-	rm  -rf /tmp/lede
-	rm  -rf /tmp/lede-ucl
-	rm  -rf /tmp/lede-upx
+#	echo "clean dir"
+#	rm  -rf /tmp/lede
+#	rm  -rf /tmp/lede-ucl
+#	rm  -rf /tmp/lede-upx
 
 	echo "modify openwrt tools/Makefile"
-	insert_line "${OPENWRT_ROOT}/tools/Makefile" "tools-y += autoconf autoconf-archive automake bc bison cmake dosfstools" "tools-y += ucl upx"
-	insert_line "${OPENWRT_ROOT}/tools/Makefile" "\$(curdir)/bison/compile := \$(curdir)/flex/compile" "\$(curdir)/upx/compile := \$(curdir)/ucl/compile"
+	insert_line "${OPENWRT_ROOT}/tools/Makefile" "tools-y += autoconf autoconf-archive automake bc bison cmake dosfstools" #"tools-y += ucl upx"
+	insert_line "${OPENWRT_ROOT}/tools/Makefile" "\$(curdir)/bison/compile := \$(curdir)/flex/compile" #"\$(curdir)/upx/compile := \$(curdir)/ucl/compile"
 	git add tools/Makefile
-	git commit -m "tools: add  ucl upx to Makefile"
+	git commit -m "tools: add  to Makefile" #ucl upx to Makefile"
 
 
 	echo "modify feeds.conf.default"
@@ -60,4 +60,3 @@ source_update () {
 	git commit -m "enable cm4 wifi default"
 
 }
-
