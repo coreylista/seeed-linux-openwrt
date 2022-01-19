@@ -2,7 +2,8 @@
 
 . scripts/file-editor.sh
 . scripts/source-operator.sh
-
+OPENWRTROOT="$PWD/openwrt"
+OPENWRT_CONFIG_FILE="configs/rpi_cm4_defconfig"
 # parse commandline options
 while [ ! -z "$1" ]; do
 	case $1 in
@@ -13,7 +14,6 @@ while [ ! -z "$1" ]; do
 		source_update
 		;;
 	--feeds)
-	    OPENWRTROOT="$PWD/openwrt"
 		cd ${OPENWRTROOT}
 		./scripts/feeds update -a
 		cd ${OPENWRTROOT}/feeds/packages
@@ -37,7 +37,6 @@ while [ ! -z "$1" ]; do
 #			echo "use x86 default custom rootfs config files"
 #		fi
 #		if [ "${OPENWRT_CONFIG_FILE}" = "configs/rpi_cm4_defconfig" ]; then
-			OPENWRT_CONFIG_FILE=$(./configs/rpi_cm4_defconfig)
 			cp -rf ../files/rpi files
 			echo "use rpi default custom rootfs config files"
 #		fi

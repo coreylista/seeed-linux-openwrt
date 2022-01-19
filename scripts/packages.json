@@ -12,33 +12,6 @@
             ]
         },
         {
-            "name": "luci-app-dockerman",
-            "author": "lisaac",
-            "url": "https://github.com/lisaac/luci-app-dockerman",
-            "branch": "master",
-            "items": [
-               "*"
-            ]
-        },
-        {
-            "name": "luci-lib-docker",
-            "author": "lisaac",
-            "url": "https://github.com/lisaac/luci-lib-docker",
-            "branch": "master",
-            "items": [
-               "*"
-            ]
-        },
-        {
-            "name": "luci-app-webadmin",
-            "author": "awesome-openwrt",
-            "url": "https://github.com/awesome-openwrt/luci-app-webadmin",
-            "branch": "master",
-            "items": [
-               "*"
-            ]
-        },
-        {
             "name": "luci-theme-argon",
             "author": "jerrykuku",
             "url": "https://github.com/jerrykuku/luci-theme-argon",
