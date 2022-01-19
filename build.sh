@@ -20,10 +20,10 @@ while [ ! -z "$1" ]; do
 		#git am ${WORKSPACE_ROOT}/patches/fd03fc267e077bf948ada8af2d9fcb3616551247.patch
 		cd ${OPENWRTROOT}
 		./scripts/feeds install -a
-		./scripts/feeds uninstall luci-app-dockerman
-		./scripts/feeds install -f -p seeed luci-app-dockerman
-		./scripts/feeds uninstall luci-lib-docker
-		./scripts/feeds install -f -p seeed luci-lib-docker
+#		./scripts/feeds uninstall luci-app-dockerman
+#		./scripts/feeds install -f -p seeed luci-app-dockerman
+#		./scripts/feeds uninstall luci-lib-docker
+#		./scripts/feeds install -f -p seeed luci-lib-docker
 		;;
 	--deconfig)
 		cd ${OPENWRTROOT}
