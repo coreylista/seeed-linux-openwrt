@@ -4,7 +4,7 @@
 source_update () {
 	echo "download code ..."
 #	WORKSPACE_ROOT=`pwd`
-	OPENWRT_MAINLINE="https://github.com/openwrt/openwrt"
+	OPENWRT_MAINLINE="https://github.com/coreylista/openwrt"
 #	LEAN_PACKAGE="https://github.com/coolsnowwolf/lede"
 	git clone ${OPENWRT_MAINLINE} openwrt
 	cd openwrt
@@ -21,7 +21,7 @@ source_update () {
 #	git-filter-repo --path tools/upx/
 
 	cd ${OPENWRT_ROOT}
-	git checkout remotes/origin/master -b master
+	git checkout remotes/origin/openwrt-21.02 -b openwrt-21.02
 #	git remote add -f ucl /tmp/lede-ucl
 #	git remote add -f upx /tmp/lede-upx
 
@@ -44,9 +44,9 @@ source_update () {
 	echo -e "src-git seeed https://github.com/coreylista/seeed-linux-openwrt;packages" >> ${OPENWRT_ROOT}/feeds.conf.default
 	git add feeds.conf.default
 	git commit -m "feeds: add seeed's packages"
-	echo -e "src-git node https://github.com/nxhack/openwrt-node-packages.git;openwrt-21.02" >> ${OPENWRT_ROOT}/feeds.conf.default
-	git add feeds.conf.default
-	git commit -m "feeds: add nxhack's node packages"
+	#echo -e "src-git node https://github.com/nxhack/openwrt-node-packages.git;openwrt-21.02" >> ${OPENWRT_ROOT}/feeds.conf.default
+	#git add feeds.conf.default
+	#git commit -m "feeds: add nxhack's node packages"
 
 #	echo  "x86: enable igc net drivers"
 #	echo -e "CONFIG_IGC=y" >> $OPENWRT_ROOT/target/linux/x86/config-5.4
