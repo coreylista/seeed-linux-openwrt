@@ -3,33 +3,6 @@
     "branch": "packages",
     "packages": [
         {
-            "name": "luci-app-diskman",
-            "author": "lisaac",
-            "url": "https://github.com/lisaac/luci-app-diskman",
-            "branch": "master",
-            "items": [
-               "*"
-            ]
-        },
-        {
-            "name": "luci-theme-argon",
-            "author": "jerrykuku",
-            "url": "https://github.com/jerrykuku/luci-theme-argon",
-            "branch": "master",
-            "items": [
-                "*"
-            ]
-        },
-        {
-            "name": "luci-app-argon-config",
-            "author": "jerrykuku",
-            "url": "https://github.com/jerrykuku/luci-theme-argon",
-            "branch": "master",
-            "items": [
-                "*"
-            ]
-        },
-        {
             "name": "packages",
             "author": "seeed",
             "url": "https://github.com/coreylista/seeed-linux-openwrt",
